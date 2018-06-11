@@ -2,6 +2,9 @@
 
 JSON schema of verbose configuration settings for spinning up bot instances in an adapter-driven channel-engine-router (AD-CER) environment.
 
+`bot.schema.json` defines the schema for the configuration details for a single bot instance.  
+`bots.schema.json` defines the schema for a map of bot ids to their respective configuration details for multiple bot instances.
+
 ### Installing
 
 Install all dependencies:
