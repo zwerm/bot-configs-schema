@@ -1,0 +1,391 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "bot-config",
+    "type": "object",
+    "properties": {
+        "name": { "type": "string" },
+        "team": { "type": "string" },
+        "engines": { "$ref": "#/definitions/bot-engines" },
+        "options": { "$ref": "#/definitions/bot-options" },
+        "channels": { "$ref": "#/definitions/bot-channels" }
+    },
+    "required": [ "name", "team", "engines", "options", "channels" ],
+    "definitions": {
+        "adapter-label": { "type": [ "string", "null" ] },
+        "aws-polly-voice": {
+            "$comment": "all the possible voices supported by aws-polly",
+            "type": "string",
+            "enum": [
+                "Geraint",
+                "Gwyneth",
+                "Mads",
+                "Naja",
+                "Hans",
+                "Marlene",
+                "Nicole",
+                "Russell",
+                "Amy",
+                "Brian",
+                "Emma",
+                "Raveena",
+                "Ivy",
+                "Joanna",
+                "Joey",
+                "Justin",
+                "Kendra",
+                "Kimberly",
+                "Matthew",
+                "Salli",
+                "Conchita",
+                "Enrique",
+                "Miguel",
+                "Penelope",
+                "Chantal",
+                "Celine",
+                "Mathieu",
+                "Dora",
+                "Karl",
+                "Carla",
+                "Giorgio",
+                "Mizuki",
+                "Liv",
+                "Lotte",
+                "Ruben",
+                "Ewa",
+                "Jacek",
+                "Jan",
+                "Maja",
+                "Ricardo",
+                "Vitoria",
+                "Cristiano",
+                "Ines",
+                "Carmen",
+                "Maxim",
+                "Tatyana",
+                "Astrid",
+                "Filiz",
+                "Vicki",
+                "Takumi",
+                "Seoyeon",
+                "Aditi"
+            ]
+        },
+        "aws-region": {
+            "$comment": "all the possible regions offered by aws",
+            "type": "string",
+            "enum": [
+                "us-east-1",
+                "us-east-2",
+                "us-west-1",
+                "us-west-2",
+                "ca-central-1",
+                "eu-west-1",
+                "eu-central-1",
+                "eu-west-2",
+                "eu-west-3",
+                "ap-northeast-1",
+                "ap-northeast-2",
+                "ap-southeast-1",
+                "ap-southeast-2",
+                "ap-south-1",
+                "sa-east-1"
+            ]
+        },
+        "aws-region-polly": {
+            "$comment": "all the possible regions that aws-polly operates in",
+            "type": "string",
+            "enum": [
+                "us-east-1",
+                "us-east-2",
+                "us-west-1",
+                "us-west-2",
+                "ca-central-1",
+                "eu-west-1",
+                "eu-central-1",
+                "eu-west-2",
+                "eu-west-3",
+                "ap-northeast-1",
+                "ap-northeast-2",
+                "ap-southeast-1",
+                "ap-southeast-2",
+                "ap-south-1",
+                "sa-east-1"
+            ]
+        },
+        "aws-region-lex": {
+            "$comment": "all the possible regions that amazon-lex operates in",
+            "type": "string",
+            "enum": [
+                "us-east-1",
+                "eu-west-1"
+            ]
+        },
+        "aws-credentials": {
+            "$comment": "object containing required settings for using aws services",
+            "type": "object",
+            "properties": {
+                "awsAccessKeyId": { "type": "string" },
+                "awsSecretAccessKey": { "type": "string" }
+            },
+            "required": [ "awsAccessKeyId", "awsSecretAccessKey" ]
+        },
+        "dialogflow-credentials": {
+            "$comment": "object containing required settings for using google cloud platform services",
+            "type": "object",
+            "properties": {
+                "type": { "type": "string" },
+                "project_id": { "type": "string" },
+                "private_key_id": { "type": "string" },
+                "private_key": { "type": "string" },
+                "client_email": { "type": "string" },
+                "client_id": { "type": "string" },
+                "auth_uri": { "type": "string" },
+                "token_uri": { "type": "string" },
+                "auth_provider_x509_cert_url": { "type": "string" },
+                "client_x509_cert_url": { "type": "string" }
+            },
+            "required": [ "project_id", "private_key", "client_email" ]
+        },
+        "dialogflow-api-version": {
+            "type": "string",
+            "enum": [ "v1", "v2" ]
+        },
+        "aws-lex-engine": {
+            "$comment": "bot engine powered by the amazon-lex service",
+            "type": "object",
+            "properties": {
+                "service": { "enum": [ "amazon-lex", "aws-lex" ] },
+                "label": { "$ref": "#/definitions/adapter-label" },
+                "hidden": { "type": "boolean", "default": false },
+                "settings": { "$ref": "#/definitions/aws-lex-engine-settings" }
+            },
+            "required": [ "service", "settings" ]
+        },
+        "aws-lex-engine-settings": {
+            "$comment": "settings for the amazon-lex engine",
+            "properties": {
+                "botName": { "type": "string" },
+                "botAlias": { "type": "string" },
+                "awsRegion": { "$ref": "#/definitions/aws-region-lex" },
+                "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
+            },
+            "required": [ "botAlias", "botName", "awsRegion", "awsCredentials" ],
+            "additionalProperties": false
+        },
+        "dialogflow-engine": {
+            "$comment": "bot engine powered by the dialogflow service",
+            "type": "object",
+            "properties": {
+                "service": { "enum": [ "dialogflow" ] },
+                "label": { "$ref": "#/definitions/adapter-label" },
+                "hidden": { "type": "boolean", "default": false },
+                "settings": { "$ref": "#/definitions/dialogflow-engine-settings" }
+            },
+            "required": [ "service", "settings" ]
+        },
+        "dialogflow-engine-settings": {
+            "$comment": "settings for the dialogflow engine",
+            "required": [ "apiVersion" ],
+            "oneOf": [
+                { "$ref": "#/definitions/dialogflow-engine-settings-v1" },
+                { "$ref": "#/definitions/dialogflow-engine-settings-v2" }
+            ]
+        },
+        "dialogflow-engine-settings-v1": {
+            "$comment": "settings for the dialogflow engine",
+            "properties": {
+                "apiVersion": { "enum": [ "v1" ] },
+                "clientToken": { "type": "string" }
+            },
+            "required": [ "apiVersion", "clientToken" ],
+            "additionalProperties": false
+        },
+        "dialogflow-engine-settings-v2": {
+            "$comment": "settings for the dialogflow engine",
+            "properties": {
+                "apiVersion": { "enum": [ "v2" ] },
+                "dialogflowCredentials": { "$ref": "#/definitions/dialogflow-credentials" }
+            },
+            "required": [ "apiVersion", "dialogflowCredentials" ],
+            "additionalProperties": false
+        },
+        "stamp-channel": {
+            "$comment": "bot channel powered by StaMP",
+            "type": "object",
+            "properties": {
+                "service": { "enum": [ "stamp" ] },
+                "label": { "$ref": "#/definitions/adapter-label" },
+                "hidden": { "type": "boolean" },
+                "settings": { "$ref": "#/definitions/stamp-channel-settings" }
+            },
+            "required": [ "service", "settings" ],
+            "additionalProperties": false
+        },
+        "stamp-channel-settings": {
+            "$comment": "settings for the StaMP channel",
+            "type": "object",
+            "properties": {
+                "webhook": { "type": "string" },
+                "authToken": { "type": "string" },
+                "shouldSendPreAndPostQueryTypingMessages": {
+                    "$comment": "should start and stop typing messages be sent to the server pre- and post- submission of query messages to the engine",
+                    "type": "boolean",
+                    "default": "true"
+                },
+                "awsVoice": { "$ref": "#/definitions/aws-polly-voice" },
+                "awsRegion": { "$ref": "#/definitions/aws-region-polly" },
+                "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
+            },
+            "required": [ "webhook", "authToken" ],
+            "additionalProperties": false
+        },
+        "webchat-channel": {
+            "$comment": "bot channel powered by WebChat",
+            "type": "object",
+            "properties": {
+                "service": { "enum": [ "webchat" ] },
+                "label": { "$ref": "#/definitions/adapter-label" },
+                "hidden": { "type": "boolean" },
+                "settings": { "$ref": "#/definitions/webchat-channel-settings" }
+            },
+            "required": [ "service", "settings" ],
+            "additionalProperties": false
+        },
+        "webchat-channel-settings": {
+            "$comment": "settings for the WebChat channel",
+            "type": "object",
+            "properties": {
+                "authToken": { "type": "string" },
+                "awsVoice": { "$ref": "#/definitions/aws-polly-voice" },
+                "awsRegion": { "$ref": "#/definitions/aws-region-polly" },
+                "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
+            },
+            "required": [ "authToken" ],
+            "additionalProperties": false
+        },
+        "facebook-channel": {
+            "$comment": "bot channel powered by facebook",
+            "type": "object",
+            "properties": {
+                "service": { "enum": [ "facebook" ] },
+                "label": { "$ref": "#/definitions/adapter-label" },
+                "hidden": { "type": "boolean", "default": false },
+                "settings": { "$ref": "#/definitions/facebook-channel-settings" }
+            },
+            "required": [ "service", "settings" ],
+            "additionalProperties": false
+        },
+        "facebook-channel-settings": {
+            "$comment": "settings for the facebook channel",
+            "type": "object",
+            "properties": {
+                "verifyToken": { "type": "string" },
+                "pageToken": { "type": "string" },
+                "awsVoice": { "$ref": "#/definitions/aws-polly-voice" },
+                "awsRegion": { "$ref": "#/definitions/aws-region-polly" },
+                "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
+            },
+            "required": [ "verifyToken", "pageToken" ],
+            "additionalProperties": false
+        },
+        "kik-channel": {
+            "$comment": "bot channel powered by Kik",
+            "type": "object",
+            "properties": {
+                "service": { "enum": [ "kik" ] },
+                "label": { "$ref": "#/definitions/adapter-label" },
+                "hidden": { "type": "boolean" },
+                "settings": { "$ref": "#/definitions/kik-channel-settings" }
+            },
+            "required": [ "service", "settings" ],
+            "additionalProperties": false
+        },
+        "kik-channel-settings": {
+            "$comment": "settings for the botsocket channel",
+            "type": "object",
+            "properties": {
+                "userName": { "type": "string" },
+                "apiKey": { "type": "string" },
+                "manuallySendReadReceipts": { "type": "boolean" },
+                "receiveReadReceipts": { "type": "boolean" },
+                "receiveDeliveryReceipts": { "type": "boolean" },
+                "receiveIsTyping": { "type": "boolean" },
+                "awsVoice": { "$ref": "#/definitions/aws-polly-voice" },
+                "awsRegion": { "$ref": "#/definitions/aws-region-polly" },
+                "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
+            },
+            "required": [ "userName", "apiKey" ],
+            "additionalProperties": false
+        },
+        "bot-engines": {
+            "$comment": "the possible engines a bot can have",
+            "type": "object",
+            "additionalProperties": { "$ref": "#/definitions/bot-engine" }
+        },
+        "bot-engine": {
+            "$comment": "all of the possible bot engines",
+            "required": [ "service" ],
+            "oneOf": [
+                { "$ref": "#/definitions/aws-lex-engine" },
+                { "$ref": "#/definitions/dialogflow-engine" }
+            ]
+        },
+        "bot-engine-settings": {
+            "$comment": "all of the possible bot engine settings",
+            "$todo": "move the settings to their own definitions?",
+            "oneOf": [
+                { "$ref": "#/definitions/aws-lex-engine-settings" },
+                { "$ref": "#/definitions/dialogflow-engine-settings" }
+            ]
+        },
+        "bot-options": {
+            "$comment": "general configuration options for the bot, that don't apply to specific engines or channels",
+            "type": "object",
+            "properties": {
+                "defaultEngine": { "type": "string" },
+                "defaultConversationLifetime": {
+                    "type": "number",
+                    "multipleOf": 1,
+                    "minimum": 1,
+                    "maximum": 525600
+                },
+                "awsVoice": { "$ref": "#/definitions/aws-polly-voice" },
+                "awsRegion": { "$ref": "#/definitions/aws-region-polly" },
+                "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
+            },
+            "required": [ "defaultEngine" ]
+        },
+        "bot-channels": {
+            "$comment": "the possible channels a bot can have",
+            "type": "object",
+            "additionalProperties": { "$ref": "#/definitions/bot-channel" }
+        },
+        "bot-channel": {
+            "$comment": "all of the possible bot channels",
+            "required": [ "service" ],
+            "oneOf": [
+                { "$ref": "#/definitions/stamp-channel" },
+                { "$ref": "#/definitions/webchat-channel" },
+                { "$ref": "#/definitions/facebook-channel" },
+                { "$ref": "#/definitions/kik-channel" }
+            ]
+        },
+        "bot-channel-settings": {
+            "$comment": "all of the possible bot channel settings",
+            "required": [ "service" ],
+            "oneOf": [
+                { "$ref": "#/definitions/stamp-channel-settings" },
+                { "$ref": "#/definitions/webchat-channel-settings" },
+                { "$ref": "#/definitions/facebook-channel-settings" }
+            ]
+        },
+        "bots": {
+            "$comment": "definition of a map of bot-configs. mainly here so that it's included in typings",
+            "type": "object",
+            "properties": {
+                "$schema": { "type": "string" }
+            },
+            "additionalProperties": { "$ref": "#" }
+        }
+    }
+}
