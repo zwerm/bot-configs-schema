@@ -12,6 +12,11 @@
     "scripts": {
         "test": "ajv compile -s bot.schema.json"
     },
+    "config": {
+        "ghooks": {
+            "pre-commit": "npm test"
+        }
+    },
     "devDependencies": {
         "ajv-cli": "^3.0.0",
         "ghooks": "^2.0.4"
