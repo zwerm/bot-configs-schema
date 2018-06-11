@@ -13,6 +13,7 @@
         "test": "ajv compile -s bot.schema.json"
     },
     "devDependencies": {
-        "ajv-cli": "^3.0.0"
+        "ajv-cli": "^3.0.0",
+        "ghooks": "^2.0.4"
     }
 }
