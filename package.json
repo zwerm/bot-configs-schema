@@ -10,6 +10,9 @@
         "url": "git+ssh://git@bitbucket.org/preferizi/bot-stamp-schema.git"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "ajv compile -s bot.schema.json"
+    },
+    "devDependencies": {
+        "ajv-cli": "^3.0.0"
     }
 }
