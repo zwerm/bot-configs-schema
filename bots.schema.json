@@ -1,0 +1,5 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "bots-config",
+    "$ref": "bot.schema.json#/definitions/bots"
+}
