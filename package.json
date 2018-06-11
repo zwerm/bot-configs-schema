@@ -10,7 +10,8 @@
         "url": "git+ssh://git@bitbucket.org/preferizi/bot-stamp-schema.git"
     },
     "scripts": {
-        "test": "ajv compile -s bot.schema.json"
+        "test": "ajv compile -s bot.schema.json",
+        "gen-types": "node ./gen-schema-types.js"
     },
     "config": {
         "ghooks": {
