@@ -20,6 +20,7 @@
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
+.idea/jsLibraryMappings.xml
 .idea/webServers.xml
 .idea/*.iml
 
