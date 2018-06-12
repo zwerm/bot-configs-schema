@@ -18,8 +18,10 @@
 .idea/**/uiDesigner.xml
 .idea/deployment.xml
 .idea/misc.xml
+.idea/modules.xml
 .idea/vcs.xml
 .idea/webServers.xml
+.idea/*.iml
 
 # Code style
 .idea/codeStyles/
