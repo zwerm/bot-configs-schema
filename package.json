@@ -1,13 +1,13 @@
 {
-    "name": "@stampit/bot-stamp-schema",
+    "name": "@stampit/bot-configs-schema",
     "version": "0.0.0",
     "description": "StaMP schema for bot configurations for use in AD-CER enviroments",
-    "homepage": "https://bitbucket.org/preferizi/bot-stamp-schema#readme",
+    "homepage": "https://bitbucket.org/preferizi/bot-configs-schema#readme",
     "license": "ISC",
     "author": "Gareth Jones",
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@bitbucket.org/preferizi/bot-stamp-schema.git"
+        "url": "git+ssh://git@bitbucket.org/preferizi/bot-configs-schema.git"
     },
     "scripts": {
         "test": "ajv compile -s bot.schema.json",
