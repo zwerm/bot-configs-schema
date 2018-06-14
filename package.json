@@ -1,7 +1,7 @@
 {
-    "name": "@stampit/bot-configs-schema",
+    "name": "@zwerm/bot-configs-schema",
     "version": "0.0.0",
-    "description": "StaMP schema for bot configurations for use in AD-CER environments",
+    "description": "Zwerm schema for bot configurations for use in AD-CER environments",
     "homepage": "https://bitbucket.org/preferizi/bot-configs-schema#readme",
     "license": "ISC",
     "author": "Gareth Jones",

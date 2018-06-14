@@ -1,4 +1,4 @@
-# StaMP Bot Configuration Schema
+# Zwerm Bot Configuration Schema
 
 JSON schema of verbose configuration settings for spinning up bot instances in an adapter-driven channel-engine-router (AD-CER) environment.
 
