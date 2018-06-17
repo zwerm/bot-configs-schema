@@ -11,7 +11,8 @@
     },
     "scripts": {
         "test": "ajv compile -s bot.schema.json",
-        "gen-types": "node ./gen-schema-types.js"
+        "gen-types": "node ./gen-schema-types.js",
+        "version": "node ./scripts/npm-version.js"
     },
     "config": {
         "ghooks": {
