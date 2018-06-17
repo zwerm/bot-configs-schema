@@ -10,8 +10,9 @@
         "url": "git+ssh://git@bitbucket.org/preferizi/bot-configs-schema.git"
     },
     "scripts": {
-        "test": "ajv compile -s bot.schema.json",
         "gen-types": "node ./gen-schema-types.js",
+        "test": "ajv compile -s bot.schema.json",
+        "preversion": "npm test",
         "version": "node ./scripts/npm-version.js"
     },
     "config": {
