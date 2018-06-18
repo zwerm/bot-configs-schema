@@ -7,7 +7,7 @@
     "author": "Gareth Jones",
     "repository": {
         "type": "git",
-        "url": "git+ssh://git@bitbucket.org/preferizi/bot-configs-schema.git"
+        "url": "ssh://git@bitbucket.org/preferizi/bot-configs-schema.git"
     },
     "scripts": {
         "gen-types": "node ./gen-schema-types.js",
