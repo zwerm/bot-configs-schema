@@ -10,3 +10,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
  - Initial commit
+
+[Unreleased]: https://bitbucket.org/preferizi/bot-configs-schema/compare/HEAD..v0.1.0
