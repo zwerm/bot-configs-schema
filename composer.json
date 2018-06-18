@@ -2,7 +2,7 @@
     "name": "zwerm/bot-configs-schema",
     "description": "Zwerm schema for bot configurations for use in AD-CER environments",
     "homepage": "https://bitbucket.org/preferizi/bot-configs-schema#readme",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "time": "2018-06-18",
     "license": "ISC",
     "authors": [

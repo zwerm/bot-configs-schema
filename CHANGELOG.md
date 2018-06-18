@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.0] - 2018-06-18
+
 Official Release
 
 ## 0.1.0 - 2018-06-18
@@ -13,5 +15,6 @@ Official Release
 ### Added
  - Initial commit
 
-[Unreleased]: https://bitbucket.org/preferizi/bot-configs-schema/compare/HEAD..v0.1.0
+[Unreleased]: https://bitbucket.org/preferizi/bot-configs-schema/compare/HEAD..v1.0.0
 
+[1.0.0]: https://bitbucket.org/preferizi/bot-configs-schema/compare/v1.0.0..v0.1.0
