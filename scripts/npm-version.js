@@ -2,6 +2,7 @@
  * Script for keeping files surrounding the `package.json` up to date with version increments.
  *
  * This script updates the `CHANGELOG.md` to include the new version in place of [Unreleased].
+ * This script updates the `CHANGELOG.md` to include the correct version links & urls.
  * This script updates the `composer.json` to make sure it's in sync with the `package.json`.
  *
  * Called by `npm` when `npm version` is run, resulting in a new git commit & version tag.
@@ -14,6 +15,7 @@ const /** @type {module:path} */ path = require('path');
 const /** @type {Object} */ packageJson = require('./../package.json');
 
 const moveChangelogUnreleasedHeaderForVersion = require('./functions/moveChangelogUnreleasedHeaderForVersion');
+const updateChangelogTagLinksForNewVersion = require('./functions/updateChangelogTagLinksForNewVersion');
 const syncComposerWithPackageJson = require('./functions/syncComposerWithPackageJson');
 const addFilesToGit = require('./functions/addFilesToGit');
 
@@ -32,6 +34,10 @@ const filePaths = {
 // region update CHANGELOG.md
 console.log(`moving [Unreleased] header in CHANGELOG.md to be ${packageJson.version}...`);
 moveChangelogUnreleasedHeaderForVersion(packageJson.version, filePaths.CHANGELOG);
+// endregion
+// region update CHANGELOG.md version header links
+console.log(`updating tag links in CHANGELOG.md...`);
+updateChangelogTagLinksForNewVersion(packageJson.version, packageJson.repository.url, filePaths.CHANGELOG);
 // endregion
 // region sync composer file
 console.log(`synchronising composer.json with package.json...`);
