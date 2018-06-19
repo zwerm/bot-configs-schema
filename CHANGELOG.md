@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [2.0.0] - 2018-06-20
+
 This major release has the `stamp` channel renamed to `api`.
 This is just a name change; no other rules have been changed.
 
@@ -22,8 +24,9 @@ Official Release
 ### Added
  - Initial commit
 
-[Unreleased]: https://bitbucket.org/preferizi/bot-configs-schema/compare/HEAD..v1.0.0
+[Unreleased]: https://bitbucket.org/preferizi/bot-configs-schema/compare/HEAD..v2.0.0
 
+[2.0.0]: https://bitbucket.org/preferizi/bot-configs-schema/compare/v2.0.0..v1.0.0
 [1.0.0]: https://bitbucket.org/preferizi/bot-configs-schema/compare/v1.0.0..v0.1.0
 
 [277d75a]: https://bitbucket.org/preferizi/bot-configs-schema/commits/277d75a
