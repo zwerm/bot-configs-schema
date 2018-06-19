@@ -109,7 +109,7 @@ export declare namespace BotsSchema {
      * via the `definition` "bot-channel".
      */
     export type BotChannel =
-        | StampChannel
+        | ApiChannel
         | WebchatChannel
         | FacebookChannel
         | KikChannel;
@@ -150,7 +150,7 @@ export declare namespace BotsSchema {
      * via the `definition` "bot-channel-settings".
      */
     export type BotChannelSettings =
-        | StampChannelSettings
+        | ApiChannelSettings
         | WebchatChannelSettings
         | FacebookChannelSettings;
 
@@ -264,19 +264,19 @@ export declare namespace BotsSchema {
     }
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
-     * via the `definition` "stamp-channel".
+     * via the `definition` "api-channel".
      */
-    export interface StampChannel {
-        service: 'stamp';
+    export interface ApiChannel {
+        service: 'api';
         label?: AdapterLabel;
         hidden?: boolean;
-        settings: StampChannelSettings;
+        settings: ApiChannelSettings;
     }
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
-     * via the `definition` "stamp-channel-settings".
+     * via the `definition` "api-channel-settings".
      */
-    export interface StampChannelSettings {
+    export interface ApiChannelSettings {
         webhook: string;
         authToken: string;
         shouldSendPreAndPostQueryTypingMessages?: boolean;
