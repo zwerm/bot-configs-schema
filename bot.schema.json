@@ -209,20 +209,20 @@
             "required": [ "apiVersion", "dialogflowCredentials" ],
             "additionalProperties": false
         },
-        "stamp-channel": {
-            "$comment": "bot channel powered by StaMP",
+        "api-channel": {
+            "$comment": "bot channel powered by an API (for now, StaMP)",
             "type": "object",
             "properties": {
-                "service": { "enum": [ "stamp" ] },
+                "service": { "enum": [ "api" ] },
                 "label": { "$ref": "#/definitions/adapter-label" },
                 "hidden": { "type": "boolean" },
-                "settings": { "$ref": "#/definitions/stamp-channel-settings" }
+                "settings": { "$ref": "#/definitions/api-channel-settings" }
             },
             "required": [ "service", "settings" ],
             "additionalProperties": false
         },
-        "stamp-channel-settings": {
-            "$comment": "settings for the StaMP channel",
+        "api-channel-settings": {
+            "$comment": "settings for the api channel",
             "type": "object",
             "properties": {
                 "webhook": { "type": "string" },
@@ -364,7 +364,7 @@
             "$comment": "all of the possible bot channels",
             "required": [ "service" ],
             "oneOf": [
-                { "$ref": "#/definitions/stamp-channel" },
+                { "$ref": "#/definitions/api-channel" },
                 { "$ref": "#/definitions/webchat-channel" },
                 { "$ref": "#/definitions/facebook-channel" },
                 { "$ref": "#/definitions/kik-channel" }
@@ -374,7 +374,7 @@
             "$comment": "all of the possible bot channel settings",
             "required": [ "service" ],
             "oneOf": [
-                { "$ref": "#/definitions/stamp-channel-settings" },
+                { "$ref": "#/definitions/api-channel-settings" },
                 { "$ref": "#/definitions/webchat-channel-settings" },
                 { "$ref": "#/definitions/facebook-channel-settings" }
             ]
