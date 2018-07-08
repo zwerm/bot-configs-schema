@@ -10,6 +10,9 @@
             "email": "hello@prefer.co.nz"
         }
     ],
+    "autoload": {
+        "classmap": [ "Schema.php" ]
+    },
     "require": { },
     "abandoned": false
 }

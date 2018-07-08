@@ -1,6 +1,12 @@
 <?php
+namespace Zwerm\BotConfigs;
 
-class BotConfigsSchema
+/**
+ * Class Schema
+ *
+ * @package Zwerm\BotConfigs
+ */
+class Schema
 {
     /**
      * Gets the `bot.schema.json` file from disk, ready for use in validation.
