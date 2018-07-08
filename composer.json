@@ -1,16 +1,15 @@
 {
     "name": "zwerm/bot-configs-schema",
-    "description": "Zwerm schema for bot configurations for use in AD-CER environments",
-    "homepage": "https://bitbucket.org/preferizi/bot-configs-schema#readme",
-    "version": "2.0.0",
+    "description": "Zwerm schema for bot configurations",
+    "homepage": "https://github.com/zwerm/bot-configs-schema#readme",
     "time": "2018-06-20",
-    "license": "ISC",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Gareth Jones",
-            "email": "jones258@gmail.com"
+            "name": "Prefer Ltd",
+            "email": "hello@prefer.co.nz"
         }
     ],
-    "require": {},
+    "require": { },
     "abandoned": false
 }

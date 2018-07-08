@@ -1,13 +1,13 @@
 {
     "name": "@zwerm/bot-configs-schema",
     "version": "2.0.0",
-    "description": "Zwerm schema for bot configurations for use in AD-CER environments",
-    "homepage": "https://bitbucket.org/preferizi/bot-configs-schema#readme",
-    "license": "ISC",
-    "author": "Gareth Jones",
+    "description": "Zwerm schema for bot configurations",
+    "homepage": "https://github.com/zwerm/bot-configs-schema#readme",
+    "license": "MIT",
+    "author": "Prefer",
     "repository": {
         "type": "git",
-        "url": "ssh://git@bitbucket.org/preferizi/bot-configs-schema.git"
+        "url": "ssh://git@github.com:zwerm/bot-configs-schema.git"
     },
     "scripts": {
         "gen-types": "node ./gen-schema-types.js",
