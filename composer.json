@@ -10,6 +10,11 @@
             "email": "hello@prefer.co.nz"
         }
     ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    },
     "autoload": {
         "classmap": [ "Schema.php" ]
     },
