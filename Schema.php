@@ -15,6 +15,6 @@ class Schema
      */
     static function getSchema()
     {
-        return json_decode(file_get_contents('bot.schema.json'));
+        return json_decode(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'bot.schema.json'));
     }
 }
