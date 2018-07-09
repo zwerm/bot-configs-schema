@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+*No upcoming unreleased version.*
 
 ## [2.0.0] - 2018-06-20
 
@@ -14,6 +15,7 @@ This is just a name change; no other rules have been changed.
 ### Changed
  - Renamed `stamp` channel to `api`. ([277d75a])
  - Regenerated schema typings. ([f135e9a])
+ - Updated PHP class to use namespacing ([3e40f80])
 
 ## [1.0.0] - 2018-06-18
 
@@ -24,10 +26,12 @@ Official Release
 ### Added
  - Initial commit
 
-[Unreleased]: https://bitbucket.org/preferizi/bot-configs-schema/compare/HEAD..v2.0.0
+[Unreleased]: https://github.com/zwerm/bot-configs-schema/compare/v2.0.0...master
 
-[2.0.0]: https://bitbucket.org/preferizi/bot-configs-schema/compare/v2.0.0..v1.0.0
-[1.0.0]: https://bitbucket.org/preferizi/bot-configs-schema/compare/v1.0.0..v0.1.0
+[2.0.0]: https://github.com/zwerm/bot-configs-schema/compare/v1.0.0...v2.0.0
+[1.0.0]: https://github.com/zwerm/bot-configs-schema/compare/v0.1.0...v1.0.0
 
-[277d75a]: https://bitbucket.org/preferizi/bot-configs-schema/commits/277d75a
-[f135e9a]: https://bitbucket.org/preferizi/bot-configs-schema/commits/f135e9a
+[277d75a]: https://github.com/zwerm/bot-configs-schema/commit/277d75a
+[f135e9a]: https://github.com/zwerm/bot-configs-schema/commit/f135e9a
+[3e40f80]: https://github.com/zwerm/bot-configs-schema/commit/3e40f80
+
