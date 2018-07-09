@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 *No upcoming unreleased version.*
 
+## [2.0.1] - 2018-06-20
+
+Maintenance version to fix php path.
+
 ## [2.0.0] - 2018-06-20
 
 This major release has the `stamp` channel renamed to `api`.
@@ -26,8 +30,9 @@ Official Release
 ### Added
  - Initial commit
 
-[Unreleased]: https://github.com/zwerm/bot-configs-schema/compare/v2.0.0...master
+[Unreleased]: https://github.com/zwerm/bot-configs-schema/compare/v2.0.1...master
 
+[2.0.1]: https://github.com/zwerm/bot-configs-schema/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/zwerm/bot-configs-schema/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/zwerm/bot-configs-schema/compare/v0.1.0...v1.0.0
 
