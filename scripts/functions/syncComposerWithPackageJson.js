@@ -11,7 +11,6 @@ const buildComposerTimeString = require('./buildComposerTimeString');
  */
 const syncComposerWithPackageJson = (packageJson, composerJsonPath) => {
     const propertiesToSync = [
-        'version',
         'description',
         'license',
         'homepage',

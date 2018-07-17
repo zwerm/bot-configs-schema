@@ -1,11 +1,20 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-*No upcoming unreleased version.*
+
+### Added
+ - `us-west-2` is now a valid Amazon Lex regions. 
+
+## [2.0.1] - 2018-06-20
+
+Bug fix release for the php class trying to include the schema from the wrong path.
+
+### Changed
+ - Use php constants to for schema file path.
 
 ## [2.0.0] - 2018-06-20
 
@@ -26,8 +35,9 @@ Official Release
 ### Added
  - Initial commit
 
-[Unreleased]: https://github.com/zwerm/bot-configs-schema/compare/v2.0.0...master
+[Unreleased]: https://github.com/zwerm/bot-configs-schema/compare/v2.0.1...master
 
+[2.0.1]: https://github.com/zwerm/bot-configs-schema/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/zwerm/bot-configs-schema/compare/v1.0.0...v2.0.0
 [1.0.0]: https://github.com/zwerm/bot-configs-schema/compare/v0.1.0...v1.0.0
 

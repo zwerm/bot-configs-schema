@@ -12,9 +12,6 @@ Install all dependencies:
 ```
 npm install
 
-# or better use yarn
-yarn
-
 ```
 
 ## Release
@@ -22,12 +19,18 @@ yarn
 To manually publish a version, run
 
 ```
-npm publish
+npm publish --access public
 ```
 
 ### Versioning
 
-We use [SemVer](http://semver.org/) for versioning.
+We follow [SemVer](http://semver.org/) for versioning.
+
+When making a Pull Request, add your changes to the *Unreleased* section of [CHANGELOG](https://github.com/zwerm/bot-configs-schema/blob/master/CHANGELOG.md).
+
+To release a new version, run the `npm version` command on `master`, it will take care of everything for you.
+
+`npm version [major | minor | patch]`
 
 ## Development
 
