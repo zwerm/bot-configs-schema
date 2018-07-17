@@ -22,7 +22,7 @@ yarn
 To manually publish a version, run
 
 ```
-npm publish
+npm publish --access public
 ```
 
 ### Versioning
