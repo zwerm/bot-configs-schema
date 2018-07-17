@@ -2,7 +2,7 @@
     "name": "zwerm/bot-configs-schema",
     "description": "Zwerm schema for bot configurations",
     "homepage": "https://github.com/zwerm/bot-configs-schema#readme",
-    "time": "2018-06-20",
+    "time": "2018-07-17",
     "license": "MIT",
     "authors": [
         {
@@ -16,8 +16,10 @@
         }
     },
     "autoload": {
-        "classmap": [ "Schema.php" ]
+        "classmap": [
+            "Schema.php"
+        ]
     },
-    "require": { },
+    "require": {},
     "abandoned": false
 }
