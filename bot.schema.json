@@ -351,7 +351,10 @@
                     "maximum": 525600
                 },
                 "icon": { "type": [ "string", "null" ] },
-                "supportedSystemEvents": { "type": [ "array", "null" ] },
+                "supportedSystemEvents": {
+                    "type": [ "array", "null" ],
+                    "items": { "type": "string" }
+                },
                 "awsVoice": { "$ref": "#/definitions/aws-polly-voice" },
                 "awsRegion": { "$ref": "#/definitions/aws-region-polly" },
                 "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
