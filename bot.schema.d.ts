@@ -251,7 +251,7 @@ export declare namespace BotsSchema {
         defaultEngine: string;
         defaultConversationLifetime?: number;
         icon?: string | null;
-        supportedSystemEvents?: any[] | null;
+        supportedSystemEvents?: string[];
         awsVoice?: AwsPollyVoice;
         awsRegion?: AwsRegionPolly;
         awsCredentials?: AwsCredentials;
