@@ -19,7 +19,7 @@ export declare namespace BotsSchema {
      * This interface was referenced by `BotConfig`'s JSON-Schema
      * via the `definition` "aws-region-lex".
      */
-    export type AwsRegionLex = 'us-east-1' | 'eu-west-1';
+    export type AwsRegionLex = 'us-east-1' | 'us-west-2' | 'eu-west-1';
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
      * via the `definition` "dialogflow-engine-settings".
@@ -250,6 +250,8 @@ export declare namespace BotsSchema {
     export interface BotOptions {
         defaultEngine: string;
         defaultConversationLifetime?: number;
+        icon?: string | null;
+        supportedSystemEvents?: string[];
         awsVoice?: AwsPollyVoice;
         awsRegion?: AwsRegionPolly;
         awsCredentials?: AwsCredentials;
