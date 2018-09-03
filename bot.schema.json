@@ -302,7 +302,7 @@
             "additionalProperties": false
         },
         "kik-channel-settings": {
-            "$comment": "settings for the botsocket channel",
+            "$comment": "settings for the kik channel",
             "type": "object",
             "properties": {
                 "userName": { "type": "string" },
@@ -316,6 +316,28 @@
                 "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
             },
             "required": [ "userName", "apiKey" ],
+            "additionalProperties": false
+        },
+        "slack-channel": {
+            "$comment": "bot channel powered by Slack",
+            "type": "object",
+            "properties": {
+                "service": { "enum": [ "slack" ] },
+                "label": { "$ref": "#/definitions/adapter-label" },
+                "hidden": { "type": "boolean" },
+                "settings": { "$ref": "#/definitions/slack-channel-settings" }
+            },
+            "required": [ "service", "settings" ],
+            "additionalProperties": false
+        },
+        "slack-channel-settings": {
+            "$comment": "settings for the Slack channel",
+            "type": "object",
+            "properties": {
+                "botUserToken": { "type": "string" },
+                "verificationToken": { "type": "string" }
+            },
+            "required": [ "botUserToken", "verificationToken" ],
             "additionalProperties": false
         },
         "bot-engines": {
@@ -373,7 +395,8 @@
                 { "$ref": "#/definitions/api-channel" },
                 { "$ref": "#/definitions/webchat-channel" },
                 { "$ref": "#/definitions/facebook-channel" },
-                { "$ref": "#/definitions/kik-channel" }
+                { "$ref": "#/definitions/kik-channel" },
+                { "$ref": "#/definitions/slack-channel" }
             ]
         },
         "bot-channel-settings": {
@@ -382,7 +405,9 @@
             "oneOf": [
                 { "$ref": "#/definitions/api-channel-settings" },
                 { "$ref": "#/definitions/webchat-channel-settings" },
-                { "$ref": "#/definitions/facebook-channel-settings" }
+                { "$ref": "#/definitions/facebook-channel-settings" },
+                { "$ref": "#/definitions/kik-channel-settings" },
+                { "$ref": "#/definitions/slack-channel-settings" }
             ]
         },
         "bots": {

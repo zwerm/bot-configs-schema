@@ -112,7 +112,8 @@ export declare namespace BotsSchema {
         | ApiChannel
         | WebchatChannel
         | FacebookChannel
-        | KikChannel;
+        | KikChannel
+        | SlackChannel;
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
      * via the `definition` "aws-region".
@@ -351,6 +352,24 @@ export declare namespace BotsSchema {
         awsVoice?: AwsPollyVoice;
         awsRegion?: AwsRegionPolly;
         awsCredentials?: AwsCredentials;
+    }
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "slack-channel".
+     */
+    export interface SlackChannel {
+        service: 'slack';
+        label?: AdapterLabel;
+        hidden?: boolean;
+        settings: SlackChannelSettings;
+    }
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "slack-channel-settings".
+     */
+    export interface SlackChannelSettings {
+        botUserToken: string;
+        verificationToken: string;
     }
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
