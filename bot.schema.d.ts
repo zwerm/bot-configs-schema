@@ -369,7 +369,7 @@ export declare namespace BotsSchema {
      */
     export interface SlackChannelSettings {
         botUserToken: string;
-        verificationToken: string;
+        signingSecret: string;
     }
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
