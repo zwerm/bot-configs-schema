@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.0] - 2018-09-03
+
 ### Added
  - Optional `'icon'` property to `options` object property.
  - Optional `'supportedSystemEvents'` property to `options` object property.
