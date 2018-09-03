@@ -335,9 +335,9 @@
             "type": "object",
             "properties": {
                 "botUserToken": { "type": "string" },
-                "verificationToken": { "type": "string" }
+                "signingSecret": { "type": "string" }
             },
-            "required": [ "botUserToken", "verificationToken" ],
+            "required": [ "botUserToken", "signingSecret" ],
             "additionalProperties": false
         },
         "bot-engines": {
