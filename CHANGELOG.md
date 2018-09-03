@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
  - Optional `'icon'` property to `options` object property.
  - Optional `'supportedSystemEvents'` property to `options` object property.
+ - Slack configuration support
 
 ## [2.1.0] - 2018-07-17
 
