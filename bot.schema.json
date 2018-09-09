@@ -259,7 +259,8 @@
                 "authToken": { "type": "string" },
                 "awsVoice": { "$ref": "#/definitions/aws-polly-voice" },
                 "awsRegion": { "$ref": "#/definitions/aws-region-polly" },
-                "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
+                "awsCredentials": { "$ref": "#/definitions/aws-credentials" },
+                "icon": { "type": [ "string", "null" ] }
             },
             "required": [ "authToken" ],
             "additionalProperties": false
