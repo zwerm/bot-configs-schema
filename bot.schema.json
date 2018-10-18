@@ -151,6 +151,10 @@
             "type": "string",
             "enum": [ "v1", "v2" ]
         },
+        "watson-api-version": {
+            "type": "string",
+            "enum": [ "2018-02-16", "2018-09-19" ]
+        },
         "aws-lex-engine": {
             "$comment": "bot engine powered by the amazon-lex service",
             "type": "object",
