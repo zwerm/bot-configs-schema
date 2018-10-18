@@ -153,7 +153,9 @@ export declare namespace BotsSchema {
     export type BotChannelSettings =
         | ApiChannelSettings
         | WebchatChannelSettings
-        | FacebookChannelSettings;
+        | FacebookChannelSettings
+        | KikChannelSettings
+        | SlackChannelSettings;
 
     export interface BotConfig {
         name: string;
@@ -306,6 +308,7 @@ export declare namespace BotsSchema {
         awsVoice?: AwsPollyVoice;
         awsRegion?: AwsRegionPolly;
         awsCredentials?: AwsCredentials;
+        icon?: string | null;
     }
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
