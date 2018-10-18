@@ -148,6 +148,11 @@ export declare namespace BotsSchema {
     export type DialogflowApiVersion = 'v1' | 'v2';
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "watson-api-version".
+     */
+    export type WatsonApiVersion = '2018-02-16' | '2018-09-19';
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
      * via the `definition` "bot-engine-settings".
      */
     export type BotEngineSettings =
