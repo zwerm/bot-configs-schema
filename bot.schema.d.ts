@@ -9,7 +9,7 @@ export declare namespace BotsSchema {
      * This interface was referenced by `BotConfig`'s JSON-Schema
      * via the `definition` "bot-engine".
      */
-    export type BotEngine = AwsLexEngine | DialogflowEngine;
+    export type BotEngine = AwsLexEngine | DialogflowEngine | WatsonEngine;
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
      * via the `definition` "adapter-label".
@@ -27,6 +27,13 @@ export declare namespace BotsSchema {
     export type DialogflowEngineSettings =
         | DialogflowEngineSettingsV1
         | DialogflowEngineSettingsV2;
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "watson-engine-settings".
+     */
+    export type WatsonEngineSettings =
+        | WatsonEngineSettingsV1
+        | WatsonEngineSettingsV2;
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
      * via the `definition` "aws-polly-voice".
@@ -141,11 +148,17 @@ export declare namespace BotsSchema {
     export type DialogflowApiVersion = 'v1' | 'v2';
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "watson-api-version".
+     */
+    export type WatsonApiVersion = '2018-02-16' | '2018-09-19';
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
      * via the `definition` "bot-engine-settings".
      */
     export type BotEngineSettings =
         | AwsLexEngineSettings
-        | DialogflowEngineSettings;
+        | DialogflowEngineSettings
+        | WatsonEngineSettings;
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
      * via the `definition` "bot-channel-settings".
@@ -245,6 +258,48 @@ export declare namespace BotsSchema {
         auth_provider_x509_cert_url?: string;
         client_x509_cert_url?: string;
         [k: string]: any;
+    }
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "watson-engine".
+     */
+    export interface WatsonEngine {
+        service: 'watson';
+        label?: AdapterLabel;
+        hidden?: boolean;
+        settings: WatsonEngineSettings;
+        [k: string]: any;
+    }
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "watson-engine-settings-v1".
+     */
+    export interface WatsonEngineSettingsV1 {
+        apiVersion: '2018-02-16';
+        watsonCredentials: WatsonCredentials;
+        workspaceId: string;
+    }
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "watson-credentials".
+     */
+    export interface WatsonCredentials {
+        apikey?: string;
+        iam_apikey_description?: string;
+        iam_apikey_name?: string;
+        iam_role_crn?: string;
+        iam_serviceid_crn?: string;
+        url?: string;
+        [k: string]: any;
+    }
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "watson-engine-settings-v2".
+     */
+    export interface WatsonEngineSettingsV2 {
+        apiVersion: '2018-09-19';
+        watsonCredentials: WatsonCredentials;
+        assistantId: string;
     }
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema

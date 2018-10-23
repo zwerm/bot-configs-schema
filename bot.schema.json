@@ -147,9 +147,26 @@
             },
             "required": [ "project_id", "private_key", "client_email" ]
         },
+        "watson-credentials": {
+            "$comment": "object containing required settings for using watson services",
+            "type": "object",
+            "properties": {
+                "apikey": { "type": "string" },
+                "iam_apikey_description": { "type": "string" },
+                "iam_apikey_name": { "type": "string" },
+                "iam_role_crn": { "type": "string" },
+                "iam_serviceid_crn": { "type": "string" },
+                "url": { "type": "string" }
+            },
+            "required": [ "apikey", "iam_apikey_description", "iam_apikey_name", "iam_role_crn", "iam_serviceid_crn", "url" ]
+        },
         "dialogflow-api-version": {
             "type": "string",
             "enum": [ "v1", "v2" ]
+        },
+        "watson-api-version": {
+            "type": "string",
+            "enum": [ "2018-02-16", "2018-09-19" ]
         },
         "aws-lex-engine": {
             "$comment": "bot engine powered by the amazon-lex service",
@@ -208,6 +225,45 @@
                 "dialogflowCredentials": { "$ref": "#/definitions/dialogflow-credentials" }
             },
             "required": [ "apiVersion", "dialogflowCredentials" ],
+            "additionalProperties": false
+        },
+        "watson-engine": {
+            "$comment": "bot engine powered by the watson service",
+            "type": "object",
+            "properties": {
+                "service": { "enum": [ "watson" ] },
+                "label": { "$ref": "#/definitions/adapter-label" },
+                "hidden": { "type": "boolean", "default": false },
+                "settings": { "$ref": "#/definitions/watson-engine-settings" }
+            },
+            "required": [ "service", "settings" ]
+        },
+        "watson-engine-settings": {
+            "$comment": "settings for the watson engine",
+            "required": [ "apiVersion", "watsonCredentials" ],
+            "oneOf": [
+                { "$ref": "#/definitions/watson-engine-settings-v1" },
+                { "$ref": "#/definitions/watson-engine-settings-v2" }
+            ]
+        },
+        "watson-engine-settings-v1": {
+            "$comment": "settings for the watson engine",
+            "properties": {
+                "apiVersion": { "enum": [ "2018-02-16" ] },
+                "watsonCredentials": { "$ref": "#/definitions/watson-credentials" },
+                "workspaceId": { "type": "string" }
+            },
+            "required": [ "apiVersion", "watsonCredentials", "workspaceId" ],
+            "additionalProperties": false
+        },
+        "watson-engine-settings-v2": {
+            "$comment": "settings for the watson engine",
+            "properties": {
+                "apiVersion": { "enum": [ "2018-09-19" ] },
+                "watsonCredentials": { "$ref": "#/definitions/watson-credentials" },
+                "assistantId": { "type": "string" }
+            },
+            "required": [ "apiVersion", "watsonCredentials", "assistantId" ],
             "additionalProperties": false
         },
         "api-channel": {
@@ -351,7 +407,8 @@
             "required": [ "service" ],
             "oneOf": [
                 { "$ref": "#/definitions/aws-lex-engine" },
-                { "$ref": "#/definitions/dialogflow-engine" }
+                { "$ref": "#/definitions/dialogflow-engine" },
+                { "$ref": "#/definitions/watson-engine" }
             ]
         },
         "bot-engine-settings": {
@@ -359,7 +416,8 @@
             "$todo": "move the settings to their own definitions?",
             "oneOf": [
                 { "$ref": "#/definitions/aws-lex-engine-settings" },
-                { "$ref": "#/definitions/dialogflow-engine-settings" }
+                { "$ref": "#/definitions/dialogflow-engine-settings" },
+                { "$ref": "#/definitions/watson-engine-settings" }
             ]
         },
         "bot-options": {
