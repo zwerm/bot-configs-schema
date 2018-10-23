@@ -276,9 +276,21 @@ export declare namespace BotsSchema {
      */
     export interface WatsonEngineSettingsV1 {
         apiVersion: '2018-02-16';
-        username: string;
-        password: string;
+        watsonCredentials: WatsonCredentials;
         workspaceId: string;
+    }
+    /**
+     * This interface was referenced by `BotConfig`'s JSON-Schema
+     * via the `definition` "watson-credentials".
+     */
+    export interface WatsonCredentials {
+        apikey?: string;
+        iam_apikey_description?: string;
+        iam_apikey_name?: string;
+        iam_role_crn?: string;
+        iam_serviceid_crn?: string;
+        url?: string;
+        [k: string]: any;
     }
     /**
      * This interface was referenced by `BotConfig`'s JSON-Schema
@@ -286,8 +298,7 @@ export declare namespace BotsSchema {
      */
     export interface WatsonEngineSettingsV2 {
         apiVersion: '2018-09-19';
-        username: string;
-        password: string;
+        watsonCredentials: WatsonCredentials;
         assistantId: string;
     }
     /**

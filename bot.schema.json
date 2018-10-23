@@ -147,6 +147,19 @@
             },
             "required": [ "project_id", "private_key", "client_email" ]
         },
+        "watson-credentials": {
+            "$comment": "object containing required settings for using watson services",
+            "type": "object",
+            "properties": {
+                "apikey": { "type": "string" },
+                "iam_apikey_description": { "type": "string" },
+                "iam_apikey_name": { "type": "string" },
+                "iam_role_crn": { "type": "string" },
+                "iam_serviceid_crn": { "type": "string" },
+                "url": { "type": "string" }
+            },
+            "required": [ "apikey", "iam_apikey_description", "iam_apikey_name", "iam_role_crn", "iam_serviceid_crn", "url" ]
+        },
         "dialogflow-api-version": {
             "type": "string",
             "enum": [ "v1", "v2" ]
@@ -227,7 +240,7 @@
         },
         "watson-engine-settings": {
             "$comment": "settings for the watson engine",
-            "required": [ "apiVersion", "username", "password" ],
+            "required": [ "apiVersion", "watsonCredentials" ],
             "oneOf": [
                 { "$ref": "#/definitions/watson-engine-settings-v1" },
                 { "$ref": "#/definitions/watson-engine-settings-v2" }
@@ -237,22 +250,20 @@
             "$comment": "settings for the watson engine",
             "properties": {
                 "apiVersion": { "enum": [ "2018-02-16" ] },
-                "username": { "type": "string" },
-                "password": { "type": "string" },
+                "watsonCredentials": { "$ref": "#/definitions/watson-credentials" },
                 "workspaceId": { "type": "string" }
             },
-            "required": [ "apiVersion", "username", "password", "workspaceId" ],
+            "required": [ "apiVersion", "watsonCredentials", "workspaceId" ],
             "additionalProperties": false
         },
         "watson-engine-settings-v2": {
             "$comment": "settings for the watson engine",
             "properties": {
                 "apiVersion": { "enum": [ "2018-09-19" ] },
-                "username": { "type": "string" },
-                "password": { "type": "string" },
+                "watsonCredentials": { "$ref": "#/definitions/watson-credentials" },
                 "assistantId": { "type": "string" }
             },
-            "required": [ "apiVersion", "username", "password", "assistantId" ],
+            "required": [ "apiVersion", "watsonCredentials", "assistantId" ],
             "additionalProperties": false
         },
         "api-channel": {
