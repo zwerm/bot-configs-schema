@@ -9,15 +9,11 @@
  * @return {string}
  */
 const buildComposerTimeString = date => {
-    const year = date.getFullYear();
-    const day = `${date.getDate()}`;
-    const month = `${(date.getMonth() + 1)}`;
+  const year = date.getFullYear();
+  const day = `${date.getDate()}`;
+  const month = `${date.getMonth() + 1}`;
 
-    return [
-        year,
-        month.padStart(2, '0'),
-        day.padStart(2, '0')
-    ].join('-');
+  return [year, month.padStart(2, '0'), day.padStart(2, '0')].join('-');
 };
 
 module.exports = buildComposerTimeString;

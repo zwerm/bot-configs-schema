@@ -20,9 +20,7 @@ const /** @type {module:fs} */ fs = require('fs');
  * @return {string}
  */
 const ensureProperGitRepoLink = gitRepoUrl => {
-    return gitRepoUrl
-        .replace('ssh://git@', 'https://')
-        .replace('.git', '');
+  return gitRepoUrl.replace('ssh://git@', 'https://').replace('.git', '');
 };
 
 /**
@@ -36,14 +34,16 @@ const ensureProperGitRepoLink = gitRepoUrl => {
  * @return {string}
  */
 const getCompareSpacerFromRepoHostUrl = repoUrl => {
-    if (repoUrl.startsWith('https://bitbucket')) { // bitbucket
-        return '..';
-    }
-    if (repoUrl.startsWith('https://github')) { // github
-        return '...';
-    }
+  if (repoUrl.startsWith('https://bitbucket')) {
+    // bitbucket
+    return '..';
+  }
+  if (repoUrl.startsWith('https://github')) {
+    // github
+    return '...';
+  }
 
-    throw new Error(`unknown repo host ${repoUrl}`);
+  throw new Error(`unknown repo host ${repoUrl}`);
 };
 
 /**
@@ -56,17 +56,19 @@ const getCompareSpacerFromRepoHostUrl = repoUrl => {
  * @return {?string}
  */
 const buildCompareUrl = (repoUrl, newVersionTag, lastVersionTag) => {
-    const repoCompareSpacer = getCompareSpacerFromRepoHostUrl(repoUrl);
+  const repoCompareSpacer = getCompareSpacerFromRepoHostUrl(repoUrl);
 
-    if (repoUrl.startsWith('https://bitbucket')) { // bitbucket: source -> destination
-        return `${repoUrl}/compare/${newVersionTag}${repoCompareSpacer}${lastVersionTag}`;
-    }
+  if (repoUrl.startsWith('https://bitbucket')) {
+    // bitbucket: source -> destination
+    return `${repoUrl}/compare/${newVersionTag}${repoCompareSpacer}${lastVersionTag}`;
+  }
 
-    if (repoUrl.startsWith('https://github')) { // github: base <- compare
-        return `${repoUrl}/compare/${lastVersionTag}${repoCompareSpacer}${newVersionTag}`;
-    }
+  if (repoUrl.startsWith('https://github')) {
+    // github: base <- compare
+    return `${repoUrl}/compare/${lastVersionTag}${repoCompareSpacer}${newVersionTag}`;
+  }
 
-    throw new Error(`unknown repo host ${repoUrl}`);
+  throw new Error(`unknown repo host ${repoUrl}`);
 };
 
 /**
@@ -80,17 +82,19 @@ const buildCompareUrl = (repoUrl, newVersionTag, lastVersionTag) => {
  * @return {string}
  */
 const getOldVersionTagFromUnreleasedLink = unreleasedLinkUrl => {
-    const repoCompareSpacer = getCompareSpacerFromRepoHostUrl(unreleasedLinkUrl);
-    const compareRangeString = unreleasedLinkUrl.split('/').pop();
+  const repoCompareSpacer = getCompareSpacerFromRepoHostUrl(unreleasedLinkUrl);
+  const compareRangeString = unreleasedLinkUrl.split('/').pop();
 
-    if (unreleasedLinkUrl.startsWith('https://bitbucket')) { // bitbucket
-        return compareRangeString.split(repoCompareSpacer)[1];
-    }
-    if (unreleasedLinkUrl.startsWith('https://github')) { // github
-        return compareRangeString.split(repoCompareSpacer)[0];
-    }
+  if (unreleasedLinkUrl.startsWith('https://bitbucket')) {
+    // bitbucket
+    return compareRangeString.split(repoCompareSpacer)[1];
+  }
+  if (unreleasedLinkUrl.startsWith('https://github')) {
+    // github
+    return compareRangeString.split(repoCompareSpacer)[0];
+  }
 
-    throw new Error(`unknown repo host ${unreleasedLinkUrl}`);
+  throw new Error(`unknown repo host ${unreleasedLinkUrl}`);
 };
 
 /**
@@ -102,16 +106,26 @@ const getOldVersionTagFromUnreleasedLink = unreleasedLinkUrl => {
  * @return {string}
  */
 const getUnreleasedCompareUrl = (changelog, gitUrl) => {
-    const unreleasedLinkPrefix = '[Unreleased]: ';
+  const unreleasedLinkPrefix = '[Unreleased]: ';
 
-    const unreleasedVersionCompareUrlStart = changelog.lastIndexOf(`${unreleasedLinkPrefix}${gitUrl}/compare/`) + unreleasedLinkPrefix.length;
-    const unreleasedVersionCompareUrlEnd = changelog.indexOf('\n', unreleasedVersionCompareUrlStart);
+  const unreleasedVersionCompareUrlStart =
+    changelog.lastIndexOf(`${unreleasedLinkPrefix}${gitUrl}/compare/`) +
+    unreleasedLinkPrefix.length;
+  const unreleasedVersionCompareUrlEnd = changelog.indexOf(
+    '\n',
+    unreleasedVersionCompareUrlStart
+  );
 
-    if (unreleasedVersionCompareUrlStart - unreleasedLinkPrefix.length === -1) {
-        throw new Error(`unable to find '${`${unreleasedLinkPrefix}${gitUrl}/compare/`} in changelog`);
-    }
+  if (unreleasedVersionCompareUrlStart - unreleasedLinkPrefix.length === -1) {
+    throw new Error(
+      `unable to find '${`${unreleasedLinkPrefix}${gitUrl}/compare/`} in changelog`
+    );
+  }
 
-    return changelog.substring(unreleasedVersionCompareUrlStart, unreleasedVersionCompareUrlEnd);
+  return changelog.substring(
+    unreleasedVersionCompareUrlStart,
+    unreleasedVersionCompareUrlEnd
+  );
 };
 
 /**
@@ -129,28 +143,41 @@ const getUnreleasedCompareUrl = (changelog, gitUrl) => {
  * @param {string} gitRepoUrl url to the bitbucket repo, taking from the `repository.url` field of the `package.json`.
  * @param {string} changelogPath the path to the `CHANGELOG.md` file.
  */
-const updateChangelogTagLinksForNewVersion = (newVersionString, gitRepoUrl, changelogPath) => {
-    const oldChangelogFile = fs.readFileSync(changelogPath).toString();
+const updateChangelogTagLinksForNewVersion = (
+  newVersionString,
+  gitRepoUrl,
+  changelogPath
+) => {
+  const oldChangelogFile = fs.readFileSync(changelogPath).toString();
 
-    const repoUrl = ensureProperGitRepoLink(gitRepoUrl);
-    const unreleasedCompareUrl = getUnreleasedCompareUrl(oldChangelogFile, repoUrl);
+  const repoUrl = ensureProperGitRepoLink(gitRepoUrl);
+  const unreleasedCompareUrl = getUnreleasedCompareUrl(
+    oldChangelogFile,
+    repoUrl
+  );
 
-    const newVersionTag = `v${newVersionString}`;
-    const oldVersionTag = getOldVersionTagFromUnreleasedLink(unreleasedCompareUrl);
+  const newVersionTag = `v${newVersionString}`;
+  const oldVersionTag = getOldVersionTagFromUnreleasedLink(
+    unreleasedCompareUrl
+  );
 
-    const newChangelogFile = oldChangelogFile.replace(
-        [
-            `[Unreleased]: ${buildCompareUrl(repoUrl, 'HEAD', oldVersionTag)}`,
-            null // there should be a blank line between the [Unreleased] url & the block of tag urls
-        ].join('\n'),
-        [
-            `[Unreleased]: ${buildCompareUrl(repoUrl, 'HEAD', newVersionTag)}`,
-            null, // there should be a blank line between the [Unreleased] url & the block of tag urls
-            `[${newVersionString}]: ${buildCompareUrl(repoUrl, newVersionTag, oldVersionTag)}`
-        ].join('\n')
-    );
+  const newChangelogFile = oldChangelogFile.replace(
+    [
+      `[Unreleased]: ${buildCompareUrl(repoUrl, 'HEAD', oldVersionTag)}`,
+      null // there should be a blank line between the [Unreleased] url & the block of tag urls
+    ].join('\n'),
+    [
+      `[Unreleased]: ${buildCompareUrl(repoUrl, 'HEAD', newVersionTag)}`,
+      null, // there should be a blank line between the [Unreleased] url & the block of tag urls
+      `[${newVersionString}]: ${buildCompareUrl(
+        repoUrl,
+        newVersionTag,
+        oldVersionTag
+      )}`
+    ].join('\n')
+  );
 
-    fs.writeFileSync(changelogPath, newChangelogFile);
+  fs.writeFileSync(changelogPath, newChangelogFile);
 };
 
 module.exports = updateChangelogTagLinksForNewVersion;

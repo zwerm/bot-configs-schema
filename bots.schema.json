@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-06/schema#",
-    "$comment": "mainly here for ides like IntelliJ - won't compile with ajv-cli for some reason",
-    "title": "bots-config",
-    "$ref": "bot.schema.json#/definitions/bots"
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$comment": "mainly here for ides like IntelliJ - won't compile with ajv-cli for some reason",
+  "title": "bots-config",
+  "$ref": "bot.schema.json#/definitions/bots"
 }

@@ -10,21 +10,23 @@ const buildComposerTimeString = require('./buildComposerTimeString');
  * @param {string} composerJsonPath path to the `composer.json` file to read & write.
  */
 const syncComposerWithPackageJson = (packageJson, composerJsonPath) => {
-    const propertiesToSync = [
-        'description',
-        'license',
-        'homepage',
-        'keywords'
-    ];
+  const propertiesToSync = ['description', 'license', 'homepage', 'keywords'];
 
-    const composerJson = require(composerJsonPath);
-    propertiesToSync.forEach(property => console.log(` > syncing ${property}...`) || (composerJson[property] = packageJson[property]));
+  const composerJson = require(composerJsonPath);
+  propertiesToSync.forEach(
+    property =>
+      console.log(` > syncing ${property}...`) ||
+      (composerJson[property] = packageJson[property])
+  );
 
-    console.log(' > updating time...');
-    composerJson.time = buildComposerTimeString(new Date());
+  console.log(' > updating time...');
+  composerJson.time = buildComposerTimeString(new Date());
 
-    console.log(`>> writing to file at ${composerJsonPath}...`);
-    fs.writeFileSync(composerJsonPath, JSON.stringify(composerJson, undefined, 4));
+  console.log(`>> writing to file at ${composerJsonPath}...`);
+  fs.writeFileSync(
+    composerJsonPath,
+    JSON.stringify(composerJson, undefined, 4)
+  );
 };
 
 module.exports = syncComposerWithPackageJson;

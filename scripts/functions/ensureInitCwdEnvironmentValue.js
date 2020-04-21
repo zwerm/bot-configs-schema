@@ -14,23 +14,29 @@ const /** @type {module:path} */ path = require('path');
  * @return {boolean}
  */
 const ensureInitCwdEnvironmentValue = scriptsDirname => {
-    if (typeof process.env.INIT_CWD === 'string') {
-        return true;
-    } // we don't have to fallback if it exists
+  if (typeof process.env.INIT_CWD === 'string') {
+    return true;
+  } // we don't have to fallback if it exists
 
-    const fallbackCwd = path.join(scriptsDirname, '..');
+  const fallbackCwd = path.join(scriptsDirname, '..');
 
-    console.warn(`process.env.INIT_CWD is not defined; falling back to ${fallbackCwd}`);
-    console.warn(`if you're using yarn, you should checkout this issue: https://github.com/yarnpkg/yarn/issues/5698`);
-    console.log();
+  console.warn(
+    `process.env.INIT_CWD is not defined; falling back to ${fallbackCwd}`
+  );
+  console.warn(
+    `if you're using yarn, you should checkout this issue: https://github.com/yarnpkg/yarn/issues/5698`
+  );
+  console.log();
 
-    if (process.env.INIT_CWD) {
-        console.warn(`(actually, it is defined, but with a value of ${process.env.INIT_CWD}, which we don't like?)`);
-    }
+  if (process.env.INIT_CWD) {
+    console.warn(
+      `(actually, it is defined, but with a value of ${process.env.INIT_CWD}, which we don't like?)`
+    );
+  }
 
-    process.env.INIT_CWD = fallbackCwd;
+  process.env.INIT_CWD = fallbackCwd;
 
-    return false;
+  return false;
 };
 
 module.exports = ensureInitCwdEnvironmentValue;

@@ -1,25 +1,25 @@
 {
-    "name": "zwerm/bot-configs-schema",
-    "description": "Zwerm schema for bot configurations",
-    "homepage": "https://github.com/zwerm/bot-configs-schema#readme",
-    "time": "2018-10-24",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Prefer Ltd",
-            "email": "hello@prefer.co.nz"
-        }
-    ],
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.2.x-dev"
-        }
-    },
-    "autoload": {
-        "classmap": [
-            "Schema.php"
-        ]
-    },
-    "require": {},
-    "abandoned": false
+  "name": "zwerm/bot-configs-schema",
+  "description": "Zwerm schema for bot configurations",
+  "homepage": "https://github.com/zwerm/bot-configs-schema#readme",
+  "time": "2018-10-24",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Prefer Ltd",
+      "email": "hello@prefer.co.nz"
+    }
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.2.x-dev"
+    }
+  },
+  "autoload": {
+    "classmap": [
+      "Schema.php"
+    ]
+  },
+  "require": {},
+  "abandoned": false
 }

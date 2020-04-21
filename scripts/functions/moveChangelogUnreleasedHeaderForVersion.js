@@ -10,15 +10,17 @@ const buildComposerTimeString = require('./buildComposerTimeString');
  * @param {string} changelogPath the path to the `CHANGELOG.md` file.
  */
 const moveChangelogUnreleasedHeaderForVersion = (newVersion, changelogPath) => {
-    const oldChangelogFile = fs.readFileSync(changelogPath).toString();
-    const newChangelogFile = oldChangelogFile.replace('## [Unreleased]', [
-            '## [Unreleased]',
-            null, // there should be a blank line between ## [Unreleased] & the new version header
-            `## [${newVersion}] - ${buildComposerTimeString(new Date())}`
-        ].join('\n')
-    );
+  const oldChangelogFile = fs.readFileSync(changelogPath).toString();
+  const newChangelogFile = oldChangelogFile.replace(
+    '## [Unreleased]',
+    [
+      '## [Unreleased]',
+      null, // there should be a blank line between ## [Unreleased] & the new version header
+      `## [${newVersion}] - ${buildComposerTimeString(new Date())}`
+    ].join('\n')
+  );
 
-    fs.writeFileSync(changelogPath, newChangelogFile);
+  fs.writeFileSync(changelogPath, newChangelogFile);
 };
 
 module.exports = moveChangelogUnreleasedHeaderForVersion;

@@ -7,12 +7,12 @@ const /** @type {module:child_process} */ child_process = require('child_process
  * @param {string} cwd the current working directory to use.
  */
 const addFilesToGit = (files, cwd) => {
-    console.log(
-        'adding the following files to commit:',
-        ...files.map(value => `\n > ${value}`)
-    );
+  console.log(
+    'adding the following files to commit:',
+    ...files.map(value => `\n > ${value}`)
+  );
 
-    child_process.execSync(`git add ${files.join(' ')}`, { cwd });
+  child_process.execSync(`git add ${files.join(' ')}`, { cwd });
 };
 
 module.exports = addFilesToGit;

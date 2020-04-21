@@ -27,17 +27,26 @@ const addFilesToGit = require('./functions/addFilesToGit');
  * changes in it's version-bumping commit.
  */
 const filePaths = {
-    CHANGELOG: path.join(process.env.INIT_CWD, 'CHANGELOG.md'),
-    COMPOSER_JSON: path.join(process.env.INIT_CWD, 'composer.json')
+  CHANGELOG: path.join(process.env.INIT_CWD, 'CHANGELOG.md'),
+  COMPOSER_JSON: path.join(process.env.INIT_CWD, 'composer.json')
 };
 
 // region update CHANGELOG.md
-console.log(`moving [Unreleased] header in CHANGELOG.md to be ${packageJson.version}...`);
-moveChangelogUnreleasedHeaderForVersion(packageJson.version, filePaths.CHANGELOG);
+console.log(
+  `moving [Unreleased] header in CHANGELOG.md to be ${packageJson.version}...`
+);
+moveChangelogUnreleasedHeaderForVersion(
+  packageJson.version,
+  filePaths.CHANGELOG
+);
 // endregion
 // region update CHANGELOG.md version header links
 console.log(`updating tag links in CHANGELOG.md...`);
-updateChangelogTagLinksForNewVersion(packageJson.version, packageJson.repository.url, filePaths.CHANGELOG);
+updateChangelogTagLinksForNewVersion(
+  packageJson.version,
+  packageJson.repository.url,
+  filePaths.CHANGELOG
+);
 // endregion
 // region sync composer file
 console.log(`synchronising composer.json with package.json...`);
@@ -50,4 +59,3 @@ addFilesToGit(Object.values(filePaths), process.env.INIT_CWD);
 console.log();
 console.log('all done! -- have a nice day :)');
 console.log();
-
