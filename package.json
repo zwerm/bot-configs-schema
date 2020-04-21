@@ -3,12 +3,12 @@
   "version": "3.0.0",
   "description": "Zwerm schema for bot configurations",
   "homepage": "https://github.com/zwerm/bot-configs-schema#readme",
-  "license": "MIT",
-  "author": "Prefer",
   "repository": {
     "type": "git",
     "url": "https://github.com/zwerm/bot-configs-schema.git"
   },
+  "license": "MIT",
+  "author": "Prefer",
   "scripts": {
     "gen-types": "node ./gen-schema-types.js",
     "test": "ajv compile -s bot.schema.json",
