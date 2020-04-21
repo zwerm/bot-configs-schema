@@ -8,7 +8,7 @@
     "url": "https://github.com/zwerm/bot-configs-schema.git"
   },
   "license": "MIT",
-  "author": "Prefer",
+  "author": "Zwerm",
   "scripts": {
     "gen-types": "node ./gen-schema-types.js",
     "test": "ajv compile -s bot.schema.json",
