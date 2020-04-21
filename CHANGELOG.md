@@ -11,6 +11,7 @@ and this project adheres to
 ### Changed
 
 - Update regions for aws services.
+- Update voices for aws polly.
 
 ## [3.0.0] - 2018-10-24
 
