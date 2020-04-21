@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
+- Update regions for aws services.
+
 ## [3.0.0] - 2018-10-24
 
 ### Added

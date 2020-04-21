@@ -20,7 +20,11 @@ export declare namespace BotsSchema {
    * This interface was referenced by `BotConfig`'s JSON-Schema
    * via the `definition` "aws-region-lex".
    */
-  export type AwsRegionLex = 'us-east-1' | 'us-west-2' | 'eu-west-1';
+  export type AwsRegionLex =
+    | 'us-east-1'
+    | 'us-west-2'
+    | 'eu-west-1'
+    | 'ap-southeast-2';
   /**
    * This interface was referenced by `BotConfig`'s JSON-Schema
    * via the `definition` "dialogflow-engine-settings".
@@ -97,21 +101,22 @@ export declare namespace BotsSchema {
    * via the `definition` "aws-region-polly".
    */
   export type AwsRegionPolly =
+    | 'eu-north-1'
+    | 'ap-south-1'
+    | 'eu-west-3'
+    | 'eu-west-2'
+    | 'eu-west-1'
+    | 'ap-northeast-2'
+    | 'ap-northeast-1'
+    | 'sa-east-1'
+    | 'ca-central-1'
+    | 'ap-southeast-1'
+    | 'ap-southeast-2'
+    | 'eu-central-1'
     | 'us-east-1'
     | 'us-east-2'
     | 'us-west-1'
-    | 'us-west-2'
-    | 'ca-central-1'
-    | 'eu-west-1'
-    | 'eu-central-1'
-    | 'eu-west-2'
-    | 'eu-west-3'
-    | 'ap-northeast-1'
-    | 'ap-northeast-2'
-    | 'ap-southeast-1'
-    | 'ap-southeast-2'
-    | 'ap-south-1'
-    | 'sa-east-1';
+    | 'us-west-2';
   /**
    * This interface was referenced by `BotConfig`'s JSON-Schema
    * via the `definition` "bot-channel".
@@ -127,21 +132,22 @@ export declare namespace BotsSchema {
    * via the `definition` "aws-region".
    */
   export type AwsRegion =
+    | 'eu-north-1'
+    | 'ap-south-1'
+    | 'eu-west-3'
+    | 'eu-west-2'
+    | 'eu-west-1'
+    | 'ap-northeast-2'
+    | 'ap-northeast-1'
+    | 'sa-east-1'
+    | 'ca-central-1'
+    | 'ap-southeast-1'
+    | 'ap-southeast-2'
+    | 'eu-central-1'
     | 'us-east-1'
     | 'us-east-2'
     | 'us-west-1'
-    | 'us-west-2'
-    | 'ca-central-1'
-    | 'eu-west-1'
-    | 'eu-central-1'
-    | 'eu-west-2'
-    | 'eu-west-3'
-    | 'ap-northeast-1'
-    | 'ap-northeast-2'
-    | 'ap-southeast-1'
-    | 'ap-southeast-2'
-    | 'ap-south-1'
-    | 'sa-east-1';
+    | 'us-west-2';
   /**
    * This interface was referenced by `BotConfig`'s JSON-Schema
    * via the `definition` "dialogflow-api-version".
