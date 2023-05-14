@@ -136,6 +136,15 @@
       },
       "required": ["awsAccessKeyId", "awsSecretAccessKey"]
     },
+    "openai-credentials": {
+      "$comment": "object containing required settings for using openai services",
+      "type": "object",
+      "properties": {
+        "openaiApiKey": { "type": "string" },
+        "openaiOrganizationId": { "type": "string" }
+      },
+      "required": ["openaiApiKey"]
+    },
     "dialogflow-credentials": {
       "$comment": "object containing required settings for using google cloud platform services",
       "type": "object",
@@ -201,6 +210,16 @@
         "awsCredentials": { "$ref": "#/definitions/aws-credentials" }
       },
       "required": ["botAlias", "botName", "awsRegion", "awsCredentials"],
+      "additionalProperties": false
+    },
+    "openai-engine-settings": {
+      "$comment": "settings for the openai engine",
+      "properties": {
+        "model": { "type": "string" },
+        "systemMessage": { "type": "string" },
+        "openaiCredentials": { "$ref": "#/definitions/openai-credentials" }
+      },
+      "required": ["model", "openaiCredentials"],
       "additionalProperties": false
     },
     "dialogflow-engine": {
@@ -432,7 +451,8 @@
       "oneOf": [
         { "$ref": "#/definitions/aws-lex-engine-settings" },
         { "$ref": "#/definitions/dialogflow-engine-settings" },
-        { "$ref": "#/definitions/watson-engine-settings" }
+        { "$ref": "#/definitions/watson-engine-settings" },
+        { "$ref": "#/definitions/openai-engine-settings" }
       ]
     },
     "bot-options": {

@@ -173,7 +173,8 @@ export declare namespace BotsSchema {
   export type BotEngineSettings =
     | AwsLexEngineSettings
     | DialogflowEngineSettings
-    | WatsonEngineSettings;
+    | WatsonEngineSettings
+    | OpenaiEngineSettings;
   /**
    * This interface was referenced by `BotConfig`'s JSON-Schema
    * via the `definition` "bot-channel-settings".
@@ -443,6 +444,24 @@ export declare namespace BotsSchema {
   export interface SlackChannelSettings {
     botUserToken: string;
     signingSecret: string;
+  }
+  /**
+   * This interface was referenced by `BotConfig`'s JSON-Schema
+   * via the `definition` "openai-credentials".
+   */
+  export interface OpenaiCredentials {
+    openaiApiKey: string;
+    openaiOrganizationId?: string;
+    [k: string]: any;
+  }
+  /**
+   * This interface was referenced by `BotConfig`'s JSON-Schema
+   * via the `definition` "openai-engine-settings".
+   */
+  export interface OpenaiEngineSettings {
+    model: string;
+    systemMessage?: string;
+    openaiCredentials: OpenaiCredentials;
   }
   /**
    * This interface was referenced by `BotConfig`'s JSON-Schema
