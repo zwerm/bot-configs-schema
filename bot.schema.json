@@ -212,6 +212,16 @@
       "required": ["botAlias", "botName", "awsRegion", "awsCredentials"],
       "additionalProperties": false
     },
+    "openai-engine": {
+      "$comment": "bot engine powered by OpenAI",
+      "type": "object",
+      "properties": {
+        "service": { "enum": ["openai"] },
+        "label": { "$ref": "#/definitions/adapter-label" },
+        "hidden": { "type": "boolean", "default": false },
+        "settings": { "$ref": "#/definitions/openai-engine-settings" }
+      }
+    },
     "openai-engine-settings": {
       "$comment": "settings for the openai engine",
       "properties": {
@@ -442,7 +452,8 @@
       "oneOf": [
         { "$ref": "#/definitions/aws-lex-engine" },
         { "$ref": "#/definitions/dialogflow-engine" },
-        { "$ref": "#/definitions/watson-engine" }
+        { "$ref": "#/definitions/watson-engine" },
+        { "$ref": "#/definitions/openai-engine" }
       ]
     },
     "bot-engine-settings": {
