@@ -1,6 +1,6 @@
 {
   "name": "@zwerm/bot-configs-schema",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Zwerm schema for bot configurations",
   "homepage": "https://github.com/zwerm/bot-configs-schema#readme",
   "repository": {

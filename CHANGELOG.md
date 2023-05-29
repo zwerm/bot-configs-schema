@@ -10,6 +10,8 @@ and this project adheres to
 
 ## [3.2.1] - 2023-05-29
 
+## [3.2.1] - 2023-05-29
+
 - Updates for OpenAI engine schema
 
 ## [3.2.0] - 2023-05-15
