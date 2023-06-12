@@ -8,7 +8,9 @@ and this project adheres to
 
 ## [Unreleased]
 
-## [3.2.1] - 2023-05-29
+## [3.3.0] - 2023-06-12
+
+- Generates types for bot schemas
 
 ## [3.2.1] - 2023-05-29
 
