@@ -10,7 +10,11 @@ export declare namespace BotsSchema {
    * This interface was referenced by `BotConfig`'s JSON-Schema
    * via the `definition` "bot-engine".
    */
-  export type BotEngine = AwsLexEngine | DialogflowEngine | WatsonEngine;
+  export type BotEngine =
+    | AwsLexEngine
+    | DialogflowEngine
+    | WatsonEngine
+    | OpenaiEngine;
   /**
    * This interface was referenced by `BotConfig`'s JSON-Schema
    * via the `definition` "adapter-label".
@@ -319,6 +323,35 @@ export declare namespace BotsSchema {
   }
   /**
    * This interface was referenced by `BotConfig`'s JSON-Schema
+   * via the `definition` "openai-engine".
+   */
+  export interface OpenaiEngine {
+    service?: 'openai';
+    label?: AdapterLabel;
+    hidden?: boolean;
+    settings?: OpenaiEngineSettings;
+    [k: string]: any;
+  }
+  /**
+   * This interface was referenced by `BotConfig`'s JSON-Schema
+   * via the `definition` "openai-engine-settings".
+   */
+  export interface OpenaiEngineSettings {
+    model: string;
+    systemMessage?: string;
+    openaiCredentials: OpenaiCredentials;
+  }
+  /**
+   * This interface was referenced by `BotConfig`'s JSON-Schema
+   * via the `definition` "openai-credentials".
+   */
+  export interface OpenaiCredentials {
+    openaiApiKey: string;
+    openaiOrganizationId?: string;
+    [k: string]: any;
+  }
+  /**
+   * This interface was referenced by `BotConfig`'s JSON-Schema
    * via the `definition` "bot-options".
    */
   export interface BotOptions {
@@ -444,24 +477,6 @@ export declare namespace BotsSchema {
   export interface SlackChannelSettings {
     botUserToken: string;
     signingSecret: string;
-  }
-  /**
-   * This interface was referenced by `BotConfig`'s JSON-Schema
-   * via the `definition` "openai-credentials".
-   */
-  export interface OpenaiCredentials {
-    openaiApiKey: string;
-    openaiOrganizationId?: string;
-    [k: string]: any;
-  }
-  /**
-   * This interface was referenced by `BotConfig`'s JSON-Schema
-   * via the `definition` "openai-engine-settings".
-   */
-  export interface OpenaiEngineSettings {
-    model: string;
-    systemMessage?: string;
-    openaiCredentials: OpenaiCredentials;
   }
   /**
    * This interface was referenced by `BotConfig`'s JSON-Schema
